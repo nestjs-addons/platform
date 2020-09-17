@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "projects": {
+    "playground": {
+      "root": "packages/playground",
+      "sourceRoot": "packages/playground/src",
+      "projectType": "application",
+      "prefix": "playground",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/packages/playground",
+            "main": "packages/playground/src/main.ts",
+            "tsConfig": "packages/playground/tsconfig.app.json",
+            "assets": ["packages/playground/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "packages/playground/src/environments/environment.ts",
+                  "with": "packages/playground/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "playground:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "packages/playground/tsconfig.app.json",
+              "packages/playground/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!packages/playground/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/playground/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "in-memory-db": {
+      "root": "packages/in-memory-db",
+      "sourceRoot": "packages/in-memory-db/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "packages/in-memory-db/tsconfig.lib.json",
+              "packages/in-memory-db/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!packages/in-memory-db/src/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/in-memory-db/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/in-memory-db",
+            "tsConfig": "packages/in-memory-db/tsconfig.lib.json",
+            "packageJson": "packages/in-memory-db/package.json",
+            "main": "packages/in-memory-db/src/index.ts",
+            "assets": ["packages/in-memory-db/*.md"]
+          }
+        }
+      }
+    },
+    "playground-e2e": {
+      "root": "packages/playground-e2e",
+      "sourceRoot": "packages/playground-e2e/src",
+      "projectType": "application",
+      "prefix": "playground-e2e",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["packages/playground-e2e/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!packages/playground-e2e/**/*"]
+          }
+        },
+        "e2e": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/playground-e2e/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "playground"
+}
