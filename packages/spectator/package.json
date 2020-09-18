@@ -1,0 +1,31 @@
+{
+  "name": "@nestjs-addons/spectator",
+  "version": "0.0.11",
+  "description": "Auto-mocking for Nestjs providers",
+  "author": "Jay Bell <jay@trellis.org>",
+  "homepage": "https://www.npmjs.com/package/nest-spectator",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nestjs-addons/platform"
+  },
+  "bugs": {
+    "url": "https://github.com/nestjs-addons/platform"
+  },
+  "keywords": [
+    "nestjs",
+    "nest",
+    "typescript",
+    "testing",
+    "jest"
+  ]
+}

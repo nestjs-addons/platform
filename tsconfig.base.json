@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nestjs-addons/in-memory-db": ["packages/in-memory-db/src/index.ts"]
+      "@nestjs-addons/in-memory-db": ["packages/in-memory-db/src/index.ts"],
+      "@nestjs-addons/spectator": ["packages/spectator/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

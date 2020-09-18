@@ -31,6 +31,9 @@
     "playground-e2e": {
       "tags": [],
       "implicitDependencies": ["playground"]
+    },
+    "spectator": {
+      "tags": []
     }
   },
   "workspaceLayout": {
