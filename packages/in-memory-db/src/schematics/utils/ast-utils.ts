@@ -6,9 +6,94 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { ImportClause } from 'typescript';
 import * as ts from 'typescript';
 import { Change, InsertChange, NoopChange } from './change';
+
+
+/**
+ * Find all nodes from the AST in the subtree of node of SyntaxKind kind.
+ * @param node
+ * @param kind
+ * @param max The maximum number of items to return.
+ * @return all nodes of kind, or [] if none is found
+ */
+export function findNodes(
+  node: ts.Node,
+  kind: ts.SyntaxKind,
+  max = Infinity,
+): ts.Node[] {
+  if (!node || max == 0) {
+    return [];
+  }
+
+  const arr: ts.Node[] = [];
+  if (node.kind === kind) {
+    arr.push(node);
+    max--;
+  }
+  if (max > 0) {
+    for (const child of node.getChildren()) {
+      findNodes(child, kind, max).forEach((node) => {
+        if (max > 0) {
+          arr.push(node);
+        }
+        max--;
+      });
+
+      if (max <= 0) {
+        break;
+      }
+    }
+  }
+
+  return arr;
+}
+
+/**
+ * Helper for sorting nodes.
+ * @return function to sort nodes in increasing order of position in sourceFile
+ */
+function nodesByPosition(first: ts.Node, second: ts.Node): number {
+  return first.getStart() - second.getStart();
+}
+
+/**
+ * Insert `toInsert` after the last occurence of `ts.SyntaxKind[nodes[i].kind]`
+ * or after the last of occurence of `syntaxKind` if the last occurence is a sub child
+ * of ts.SyntaxKind[nodes[i].kind] and save the changes in file.
+ *
+ * @param nodes insert after the last occurence of nodes
+ * @param toInsert string to insert
+ * @param file file to insert changes into
+ * @param fallbackPos position to insert if toInsert happens to be the first occurence
+ * @param syntaxKind the ts.SyntaxKind of the subchildren to insert after
+ * @return Change instance
+ * @throw Error if toInsert is first occurence but fall back is not set
+ */
+export function insertAfterLastOccurrence(
+  nodes: ts.Node[],
+  toInsert: string,
+  file: string,
+  fallbackPos: number,
+  syntaxKind?: ts.SyntaxKind,
+): Change {
+  // sort() has a side effect, so make a copy so that we won't overwrite the parent's object.
+  let lastItem = [...nodes].sort(nodesByPosition).pop();
+  if (!lastItem) {
+    throw new Error();
+  }
+  if (syntaxKind) {
+    lastItem = findNodes(lastItem, syntaxKind).sort(nodesByPosition).pop();
+  }
+  if (!lastItem && fallbackPos == undefined) {
+    throw new Error(
+      `tried to insert ${toInsert} as first occurence with no fallback position`,
+    );
+  }
+  const lastItemPosition: number = lastItem ? lastItem.getEnd() : fallbackPos;
+
+  return new InsertChange(file, lastItemPosition, toInsert);
+}
 
 /**
  * Add Import `import { symbolName } from fileName` if the import doesn't exit
@@ -130,45 +215,6 @@ export function insertImport(
 }
 
 /**
- * Find all nodes from the AST in the subtree of node of SyntaxKind kind.
- * @param node
- * @param kind
- * @param max The maximum number of items to return.
- * @return all nodes of kind, or [] if none is found
- */
-export function findNodes(
-  node: ts.Node,
-  kind: ts.SyntaxKind,
-  max = Infinity,
-): ts.Node[] {
-  if (!node || max == 0) {
-    return [];
-  }
-
-  const arr: ts.Node[] = [];
-  if (node.kind === kind) {
-    arr.push(node);
-    max--;
-  }
-  if (max > 0) {
-    for (const child of node.getChildren()) {
-      findNodes(child, kind, max).forEach((node) => {
-        if (max > 0) {
-          arr.push(node);
-        }
-        max--;
-      });
-
-      if (max <= 0) {
-        break;
-      }
-    }
-  }
-
-  return arr;
-}
-
-/**
  * Get all the nodes from a source.
  * @param sourceFile The source file object.
  * @returns {Observable<ts.Node>} An observable of all the nodes in the source.
@@ -207,52 +253,6 @@ export function findNode(
   });
 
   return foundNode;
-}
-
-/**
- * Helper for sorting nodes.
- * @return function to sort nodes in increasing order of position in sourceFile
- */
-function nodesByPosition(first: ts.Node, second: ts.Node): number {
-  return first.getStart() - second.getStart();
-}
-
-/**
- * Insert `toInsert` after the last occurence of `ts.SyntaxKind[nodes[i].kind]`
- * or after the last of occurence of `syntaxKind` if the last occurence is a sub child
- * of ts.SyntaxKind[nodes[i].kind] and save the changes in file.
- *
- * @param nodes insert after the last occurence of nodes
- * @param toInsert string to insert
- * @param file file to insert changes into
- * @param fallbackPos position to insert if toInsert happens to be the first occurence
- * @param syntaxKind the ts.SyntaxKind of the subchildren to insert after
- * @return Change instance
- * @throw Error if toInsert is first occurence but fall back is not set
- */
-export function insertAfterLastOccurrence(
-  nodes: ts.Node[],
-  toInsert: string,
-  file: string,
-  fallbackPos: number,
-  syntaxKind?: ts.SyntaxKind,
-): Change {
-  // sort() has a side effect, so make a copy so that we won't overwrite the parent's object.
-  let lastItem = [...nodes].sort(nodesByPosition).pop();
-  if (!lastItem) {
-    throw new Error();
-  }
-  if (syntaxKind) {
-    lastItem = findNodes(lastItem, syntaxKind).sort(nodesByPosition).pop();
-  }
-  if (!lastItem && fallbackPos == undefined) {
-    throw new Error(
-      `tried to insert ${toInsert} as first occurence with no fallback position`,
-    );
-  }
-  const lastItemPosition: number = lastItem ? lastItem.getEnd() : fallbackPos;
-
-  return new InsertChange(file, lastItemPosition, toInsert);
 }
 
 export function getContentOfKeyLiteral(
