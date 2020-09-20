@@ -23,7 +23,7 @@
       "error",
       {
         "enforceBuildableLibDependency": true,
-        "allow": [],
+        "allow": ["playground"],
         "depConstraints": [
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
