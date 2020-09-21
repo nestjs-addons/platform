@@ -42,7 +42,7 @@
     "@nrwl/nest": "10.2.0",
     "@nrwl/node": "10.2.0",
     "@nrwl/workspace": "10.2.0",
-    "@types/jest": "26.0.13",
+    "@types/jest": "26.0.14",
     "@types/node": "~8.9.4",
     "@typescript-eslint/eslint-plugin": "2.19.2",
     "@typescript-eslint/parser": "2.19.2",
