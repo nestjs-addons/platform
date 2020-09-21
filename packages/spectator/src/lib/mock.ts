@@ -73,7 +73,7 @@ export function installProtoMethods<T>(
       typeof mock[key] === 'undefined'
     ) {
       mock[key] = createSpyFn(key);
-    } else if (descriptor.get && !mock.hasOwnProperty(key)) {
+    } else if (descriptor.get && !Object.prototype.hasOwnProperty.call(mock, key)) {
       Object.defineProperty(mock, key, {
         set: (value) => (mock[`_${key}`] = value),
         get: () => mock[`_${key}`],
