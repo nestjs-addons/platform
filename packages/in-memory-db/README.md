@@ -228,6 +228,7 @@ class UsersController extends InMemoryDBEntityController<UserEntity> {
   <tr>
     <td align="center"><a href="https://wesleygrimes.com"><img src="https://avatars0.githubusercontent.com/u/324308?v=4" width="100px;" alt="Wes Grimes"/><br /><sub><b>Wes Grimes</b></sub></a><br /><a href="#infra-wesleygrimes" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/nestjs-addons/in-memory-db/commits?author=wesleygrimes" title="Tests">⚠️</a> <a href="https://github.com/nestjs-addons/in-memory-db/commits?author=wesleygrimes" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/yharaskrik"><img src="https://avatars.githubusercontent.com/u/9469090?s=460&u=cdb912283b06f43b36da0137e61d66a48f9f7e85&v=4" width="100px;" alt="Jay Bell"/><br /><sub><b>Jay Bell</b></sub></a><br /><a href="https://github.com/nestjs-addons/in-memory-db/commits?author=yharaskrik" title="Tests">⚠️</a> <a href="https://github.com/nestjs-addons/in-memory-db/commits?author=yharaskrik" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/DominikPieper"><img src="https://avatars.githubusercontent.com/u/77470?s=400&u=dcb757adc603e0d4caebb02182be9674299e0de0&v=4" width="100px;" alt="Dominik Pieper"/><br /><sub><b>Dominik Pieper</b></sub></a><br /><a href="https://github.com/nestjs-addons/in-memory-db/commits?author=DominikPieper" title="Tests">⚠️</a> <a href="https://github.com/nestjs-addons/in-memory-db/commits?author=yharaskrik" title="Code">💻</a></td>
   </tr>
 </table>
 
