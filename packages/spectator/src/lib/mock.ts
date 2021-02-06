@@ -10,7 +10,11 @@ type Writable<T> = { -readonly [P in keyof T]: T[P] };
  * @publicApi
  */
 export type BaseSpyObject<T> = T &
-  { [P in keyof T]: T[P] extends Function ? T[P] & CompatibleSpy : T[P] } & {
+  {
+    [P in keyof T]: T[P] extends (...args: any[]) => any
+      ? T[P] & CompatibleSpy
+      : T[P];
+  } & {
     /**
      * Casts to type without readonly properties
      */
@@ -31,7 +35,7 @@ export interface CompatibleSpy extends jasmine.Spy {
    * By chaining the spy with and.callFake, all calls to the spy will delegate to the supplied
    * function.
    */
-  andCallFake(fn: Function): this;
+  andCallFake(fn: (...args: any[]) => any): this;
 
   /**
    * removes all recorded calls
@@ -54,7 +58,7 @@ export type SpyObject<T> = BaseSpyObject<T> &
 export function installProtoMethods<T>(
   mock: any,
   proto: any,
-  createSpyFn: Function,
+  createSpyFn: (...args: any[]) => any,
 ): void {
   if (proto === null || proto === Object.prototype) {
     return;
@@ -73,7 +77,10 @@ export function installProtoMethods<T>(
       typeof mock[key] === 'undefined'
     ) {
       mock[key] = createSpyFn(key);
-    } else if (descriptor.get && !Object.prototype.hasOwnProperty.call(mock, key)) {
+    } else if (
+      descriptor.get &&
+      !Object.prototype.hasOwnProperty.call(mock, key)
+    ) {
       Object.defineProperty(mock, key, {
         set: (value) => (mock[`_${key}`] = value),
         get: () => mock[`_${key}`],
@@ -99,7 +106,7 @@ export function createSpyObject<T>(
     const jestFn = jest.fn();
     const newSpy: CompatibleSpy = jestFn as any;
 
-    newSpy.andCallFake = (fn: Function) => {
+    newSpy.andCallFake = (fn: (...args: any[]) => any) => {
       jestFn.mockImplementation(fn as (...args: any[]) => any);
 
       return newSpy;

@@ -28,7 +28,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/node:execute",
@@ -51,7 +52,8 @@
           "options": {
             "jestConfig": "packages/playground/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/packages/playground"]
         }
       }
     },
@@ -79,7 +81,8 @@
           "options": {
             "jestConfig": "packages/in-memory-db/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/packages/in-memory-db"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -89,7 +92,8 @@
             "packageJson": "packages/in-memory-db/package.json",
             "main": "packages/in-memory-db/src/index.ts",
             "assets": ["packages/in-memory-db/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -114,7 +118,8 @@
           "options": {
             "jestConfig": "packages/playground-e2e/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/packages/playground-e2e"]
         }
       }
     },
@@ -142,7 +147,8 @@
           "options": {
             "jestConfig": "packages/spectator/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/packages/spectator"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -152,7 +158,8 @@
             "packageJson": "packages/spectator/package.json",
             "main": "packages/spectator/src/index.ts",
             "assets": ["packages/spectator/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     }
