@@ -24,7 +24,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "commit": "git-cz",
-    "workspace-generator": "nx workspace-generator"
+    "workspace-generator": "nx workspace-generator",
+    "publish:in-memory-db": "npm publish dist/packages/in-memory-db"
   },
   "private": true,
   "dependencies": {
