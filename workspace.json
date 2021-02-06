@@ -14,7 +14,9 @@
             "outputPath": "dist/packages/playground",
             "main": "packages/playground/src/main.ts",
             "tsConfig": "packages/playground/tsconfig.app.json",
-            "assets": ["packages/playground/src/assets"]
+            "assets": [
+              "packages/playground/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -37,14 +39,13 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "packages/playground/tsconfig.app.json",
-              "packages/playground/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!packages/playground/**/*"]
+            "lintFilePatterns": [
+              "packages/playground/**/*.ts",
+              "packages/playground/**/*.spec.ts",
+              "packages/playground/**/*.d.ts"
+            ]
           }
         },
         "test": {
@@ -63,14 +64,16 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "packages/in-memory-db/tsconfig.lib.json",
-              "packages/in-memory-db/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!packages/in-memory-db/src/**/*"]
+            "lintFilePatterns": [
+              "packages/in-memory-db/**/*.ts",
+              "packages/in-memory-db/**/*.spec.ts",
+              "packages/in-memory-db/**/*.spec.tsx",
+              "packages/in-memory-db/**/*.spec.js",
+              "packages/in-memory-db/**/*.spec.jsx",
+              "packages/in-memory-db/**/*.d.ts"
+            ]
           }
         },
         "test": {
@@ -87,7 +90,9 @@
             "tsConfig": "packages/in-memory-db/tsconfig.lib.json",
             "packageJson": "packages/in-memory-db/package.json",
             "main": "packages/in-memory-db/src/index.ts",
-            "assets": ["packages/in-memory-db/*.md"]
+            "assets": [
+              "packages/in-memory-db/*.md"
+            ]
           }
         }
       }
@@ -100,11 +105,12 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": ["packages/playground-e2e/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!packages/playground-e2e/**/*"]
+            "lintFilePatterns": [
+              "packages/playground-e2e/**/*.spec.ts",
+              "packages/playground-e2e/**/*.d.ts"
+            ]
           }
         },
         "e2e": {
@@ -123,14 +129,16 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "packages/spectator/tsconfig.lib.json",
-              "packages/spectator/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!packages/spectator/**/*"]
+            "lintFilePatterns": [
+              "packages/spectator/**/*.ts",
+              "packages/spectator/**/*.spec.ts",
+              "packages/spectator/**/*.spec.tsx",
+              "packages/spectator/**/*.spec.js",
+              "packages/spectator/**/*.spec.jsx",
+              "packages/spectator/**/*.d.ts"
+            ]
           }
         },
         "test": {
@@ -147,7 +155,9 @@
             "tsConfig": "packages/spectator/tsconfig.lib.json",
             "packageJson": "packages/spectator/package.json",
             "main": "packages/spectator/src/index.ts",
-            "assets": ["packages/spectator/*.md"]
+            "assets": [
+              "packages/spectator/*.md"
+            ]
           }
         }
       }
