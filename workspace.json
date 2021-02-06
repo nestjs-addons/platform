@@ -14,9 +14,7 @@
             "outputPath": "dist/packages/playground",
             "main": "packages/playground/src/main.ts",
             "tsConfig": "packages/playground/tsconfig.app.json",
-            "assets": [
-              "packages/playground/src/assets"
-            ]
+            "assets": ["packages/playground/src/assets"]
           },
           "configurations": {
             "production": {
@@ -90,9 +88,7 @@
             "tsConfig": "packages/in-memory-db/tsconfig.lib.json",
             "packageJson": "packages/in-memory-db/package.json",
             "main": "packages/in-memory-db/src/index.ts",
-            "assets": [
-              "packages/in-memory-db/*.md"
-            ]
+            "assets": ["packages/in-memory-db/*.md"]
           }
         }
       }
@@ -155,9 +151,7 @@
             "tsConfig": "packages/spectator/tsconfig.lib.json",
             "packageJson": "packages/spectator/package.json",
             "main": "packages/spectator/src/index.ts",
-            "assets": [
-              "packages/spectator/*.md"
-            ]
+            "assets": ["packages/spectator/*.md"]
           }
         }
       }
