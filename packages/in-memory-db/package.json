@@ -1,6 +1,6 @@
 {
   "name": "@nestjs-addons/in-memory-db",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "MIT",
   "description": "Simple In-Memory DB Service for NestJS projects",
   "author": "Wes Grimes",
