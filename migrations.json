@@ -1,11 +1,46 @@
 {
   "migrations": [
     {
-      "version": "10.2.0",
-      "description": "Remove deprecated jest builder options",
-      "factory": "./src/migrations/update-10-2-0/update-10-2-0",
-      "package": "@nrwl/jest",
-      "name": "update-10.2.0"
+      "version": "11.0.0-beta.3",
+      "description": "Update the decoration script when using Angular CLI",
+      "factory": "./src/migrations/update-11-0-0/update-decorate-angular-cli",
+      "package": "@nrwl/workspace",
+      "name": "update-decorate-angular-cli"
+    },
+    {
+      "version": "11.0.0-beta.3",
+      "description": "Update the @types/node package",
+      "factory": "./src/migrations/update-11-0-0/update-node-types",
+      "package": "@nrwl/workspace",
+      "name": "update-node-types"
+    },
+    {
+      "version": "11.0.0-beta.3",
+      "description": "Rename tools/schematics into tools/generators",
+      "factory": "./src/migrations/update-11-0-0/rename-workspace-schematics",
+      "package": "@nrwl/workspace",
+      "name": "rename-workspace-schematics"
+    },
+    {
+      "version": "11.0.0-beta.15",
+      "description": "Adds `outputs` based on builders",
+      "factory": "./src/migrations/update-11-0-0/add-outputs-in-workspace",
+      "package": "@nrwl/workspace",
+      "name": "add-outputs-in-workspace"
+    },
+    {
+      "version": "11.0.0",
+      "description": "Check that the right update command is used",
+      "factory": "./src/migrations/update-11-0-0/update-command-check",
+      "package": "@nrwl/workspace",
+      "name": "update-command-check"
+    },
+    {
+      "version": "11.0.2",
+      "description": "Rename the workspace-schematic script into workspace-generator script",
+      "factory": "./src/migrations/update-11-0-0/rename-workspace-schematic-script",
+      "package": "@nrwl/workspace",
+      "name": "rename-workspace-schematic-script"
     }
   ]
 }
