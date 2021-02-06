@@ -4,10 +4,12 @@
   "license": "MIT",
   "description": "Simple In-Memory DB Service for NestJS projects",
   "author": "Wes Grimes",
+  "homepage": "https://github.com/nestjs-addons/platform",
   "repository": "https://github.com/nestjs-addons/platform",
   "schematics": "./dist/packages/in-memory-db/schematics/collection.json",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/@nestjs-addons/in-memory-db"
   },
   "peerDependencies": {
     "@nestjs/common": "^6.7.0 || ^7.0.0",
