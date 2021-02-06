@@ -2,7 +2,7 @@
 ## Stay in touch
 
 - Author - [Wes Grimes](https://wesleygrimes.com)
-- Website - [https://github.com/nestjs-addons/in-memory-db](https://github.com/nestjs-addons/in-memory-db/)
+- Website - [https://github.com/nestjs-addons/platform](https://github.com/nestjs-addons/platform/)
 - Twitter - [@wesgrimes](https://twitter.com/wesgrimes)
 
 ## Maintainers ✨
