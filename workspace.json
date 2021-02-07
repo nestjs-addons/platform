@@ -91,7 +91,14 @@
             "tsConfig": "packages/in-memory-db/tsconfig.lib.json",
             "packageJson": "packages/in-memory-db/package.json",
             "main": "packages/in-memory-db/src/index.ts",
-            "assets": ["packages/in-memory-db/*.md"]
+            "assets": [
+              "packages/in-memory-db/*.md",
+              {
+                "glob": "**/*.json",
+                "input": "packages/in-memory-db/src/schematics",
+                "output": "src/schematics"
+              }
+            ]
           },
           "outputs": ["{options.outputPath}"]
         }
