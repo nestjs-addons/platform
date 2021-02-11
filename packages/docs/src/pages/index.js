@@ -6,7 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
-const contributors = [
+const maintainers = [
   {
     name: 'Wes Grimes',
     githubHandle: 'wesgrimes',
@@ -27,6 +27,45 @@ const contributors = [
       }
     ]
   },
+  {
+    name: 'Jay Bell',
+    githubHandle: 'yharaskrik',
+    url: 'https://github.com/yharaskrik',
+    imgUrl: 'https://avatars3.githubusercontent.com/u/9469090?s=460&u=cdb912283b06f43b36da0137e61d66a48f9f7e85&v=4',
+    tasks: [
+      {
+        icon: '⚠️',
+        description: 'Tests'
+      },
+      {
+        icon: '💻',
+        description: 'Code'
+      }
+    ]
+  },
+  {
+    name: 'Dominik Pieper',
+    githubHandle: 'DominikPieper',
+    url: 'https://github.com/DominikPieper',
+    imgUrl: 'https://avatars3.githubusercontent.com/u/77470?s=460&u=dcb757adc603e0d4caebb02182be9674299e0de0&v=4',
+    tasks: [
+      {
+        icon: '🚇',
+        description: 'Infrastructure (Hosting, Build-Tools, etc)'
+      },
+      {
+        icon: '⚠️',
+        description: 'Tests'
+      },
+      {
+        icon: '💻',
+        description: 'Code'
+      }
+    ]
+  }
+];
+
+const contributors = [
   {
     name: 'Chris Whited',
     githubHandle: 'cmwhited',
@@ -101,42 +140,6 @@ const contributors = [
     url: 'https://github.com/itayod',
     imgUrl: 'https://avatars2.githubusercontent.com/u/6719615?v=4',
     tasks: [
-      {
-        icon: '⚠️',
-        description: 'Tests'
-      },
-      {
-        icon: '💻',
-        description: 'Code'
-      }
-    ]
-  },
-  {
-    name: 'Jay Bell',
-    githubHandle: 'yharaskrik',
-    url: 'https://github.com/yharaskrik',
-    imgUrl: 'https://avatars3.githubusercontent.com/u/9469090?s=460&u=cdb912283b06f43b36da0137e61d66a48f9f7e85&v=4',
-    tasks: [
-      {
-        icon: '⚠️',
-        description: 'Tests'
-      },
-      {
-        icon: '💻',
-        description: 'Code'
-      }
-    ]
-  },
-  {
-    name: 'Dominik Pieper',
-    githubHandle: 'DominikPieper',
-    url: 'https://github.com/DominikPieper',
-    imgUrl: 'https://avatars3.githubusercontent.com/u/77470?s=460&u=dcb757adc603e0d4caebb02182be9674299e0de0&v=4',
-    tasks: [
-      {
-        icon: '🚇',
-        description: 'Infrastructure (Hosting, Build-Tools, etc)'
-      },
       {
         icon: '⚠️',
         description: 'Tests'
@@ -251,6 +254,21 @@ function Home() {
               <div className="row">
                 {features.map((props, idx) => (
                   <Feature key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <div className="container">
+          <h2>Maintainers</h2>
+        </div>
+        {maintainers && maintainers.length > 0 && (
+          <section className={styles.contributors}>
+            <div className="container">
+              <div className="row">
+                {maintainers.map((props, idx) => (
+                  <DeveloperCard key={idx} {...props}></DeveloperCard>
                 ))}
               </div>
             </div>
