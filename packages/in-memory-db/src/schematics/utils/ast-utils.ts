@@ -9,7 +9,6 @@
 import * as ts from 'typescript';
 import { Change, InsertChange, NoopChange } from './change';
 
-
 /**
  * Find all nodes from the AST in the subtree of node of SyntaxKind kind.
  * @param node
@@ -516,6 +515,7 @@ export function addSymbolToNgModuleMetadata(
   }
 
   if (Array.isArray(node)) {
+    // eslint-disable-next-line @typescript-eslint/ban-types
     const nodeArray = (node as {}) as Array<ts.Node>;
     const symbolsArray = nodeArray.map((node) => node.getText());
     if (symbolsArray.includes(symbolName)) {
