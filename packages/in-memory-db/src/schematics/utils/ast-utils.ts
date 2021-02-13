@@ -6,7 +6,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { ImportClause } from 'typescript';
 import * as ts from 'typescript';
 import { Change, InsertChange, NoopChange } from './change';
 
@@ -516,7 +515,7 @@ export function addSymbolToNgModuleMetadata(
   }
 
   if (Array.isArray(node)) {
-    const nodeArray = (node as {}) as Array<ts.Node>;
+    const nodeArray = (node as unknown) as Array<ts.Node>;
     const symbolsArray = nodeArray.map((node) => node.getText());
     if (symbolsArray.includes(symbolName)) {
       return [];
