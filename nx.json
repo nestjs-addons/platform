@@ -35,6 +35,9 @@
     },
     "spectator": {
       "tags": []
+    },
+    "docs": {
+      "tags": []
     }
   },
   "workspaceLayout": {
