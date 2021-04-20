@@ -1539,7 +1539,7 @@
     "@docsearch/css" "3.0.0-alpha.33"
     algoliasearch "^4.0.0"
 
-"@docusaurus/core@2.0.0-alpha.70", "@docusaurus/core@^2.0.0-alpha.70":
+"@docusaurus/core@2.0.0-alpha.70":
   version "2.0.0-alpha.70"
   resolved "https://registry.yarnpkg.com/@docusaurus/core/-/core-2.0.0-alpha.70.tgz#81bff8b093421a0c740fac02903dd23938806077"
   integrity sha512-ccDcr5eb5T3C6k7VoqTclBFwjVkIHK1zISdhqzRNVl8AZTql1bYMvGUJP+2WbF6RSdmsGTNWreaUlrJc00dQqw==
@@ -1748,7 +1748,7 @@
   dependencies:
     "@docusaurus/core" "2.0.0-alpha.70"
 
-"@docusaurus/plugin-sitemap@2.0.0-alpha.70", "@docusaurus/plugin-sitemap@^2.0.0-alpha.70":
+"@docusaurus/plugin-sitemap@2.0.0-alpha.70":
   version "2.0.0-alpha.70"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-sitemap/-/plugin-sitemap-2.0.0-alpha.70.tgz#1eb02e4a4ecf5fb2bdf641a6f962ae421ff86916"
   integrity sha512-ev9yNLPoeHP03jTz67daGd7yA7YhUwHeoWz14SyiKuU7OYtwL/8SJTn/V5kMDRl7o8FRQt9T//mRkpa270hmXw==
@@ -1759,7 +1759,7 @@
     joi "^17.2.1"
     sitemap "^3.2.2"
 
-"@docusaurus/preset-classic@^2.0.0-alpha.70":
+"@docusaurus/preset-classic@2.0.0-alpha.70":
   version "2.0.0-alpha.70"
   resolved "https://registry.yarnpkg.com/@docusaurus/preset-classic/-/preset-classic-2.0.0-alpha.70.tgz#7857f606eecdbaa34f8df83d62812908be02126f"
   integrity sha512-Zx98KryJjHiqzGisWKR0glXl0HXuf/YbcK9yUl6ySyS+6cIMAuGMS0HGLgbvvEmYjywz7nMLpijzGderEOihjQ==
@@ -2153,7 +2153,7 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/cli@^7.5.4":
+"@nestjs/cli@7.6.0":
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-7.6.0.tgz#661f99b578284f9124307a8077f004a091b25e77"
   integrity sha512-lW1px2gSHkRoBpKSxzP6IJNQscRKs97OAaVyV46OAP6oUR996E0EPkIslIaa16kKLJ3SFOUeZo5xl5nYbqp43g==
@@ -2180,7 +2180,7 @@
     webpack "5.28.0"
     webpack-node-externals "2.5.2"
 
-"@nestjs/common@^7.6.11":
+"@nestjs/common@7.6.11":
   version "7.6.11"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.11.tgz#56b98265a96217e5adad1f3a39cce198592e86cd"
   integrity sha512-DPBqoORDJC9xO/c83ZXNdUk9rIOLZ1Joqt8hYVtGROMIt7+s4zdbiUOWbNLPhUwluIVczYt4bFjhoU6HWoePgA==
@@ -2190,7 +2190,7 @@
     tslib "2.1.0"
     uuid "8.3.2"
 
-"@nestjs/core@^7.6.11":
+"@nestjs/core@7.6.11":
   version "7.6.11"
   resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.11.tgz#c0e708ea51cd53c270dcba5e836c3ca643aeb52b"
   integrity sha512-Knjzy755Er2Nainv/kNqnfQVz8JnCFmqOZbMOZ4IYHzUcfM+Qt/w5rAQQRwRjmpqbyCte4FcVVbv0cU2jBOb/Q==
@@ -2203,7 +2203,7 @@
     tslib "2.1.0"
     uuid "8.3.2"
 
-"@nestjs/platform-express@^7.6.11":
+"@nestjs/platform-express@7.6.11":
   version "7.6.11"
   resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.11.tgz#4e12b179cd683f90d2fc91af1611edbafeab230d"
   integrity sha512-YNlkhoNfu9QswnIQ0Syzzbxy7CKR3kp4+t8SDX4Pz5ZvJ/5NDQzUHTEg3QUoh8L4IG2/nXHC/gUICQP/fuovJw==
@@ -2214,6 +2214,16 @@
     multer "1.4.2"
     tslib "2.1.0"
 
+"@nestjs/schematics@7.2.7":
+  version "7.2.7"
+  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.2.7.tgz#22cd9d687afbbce068a7d20df02806c6f85832a8"
+  integrity sha512-71XqMPf7s2P1Q6PVMDLbSLphVWgGDK2CgURVYyreuIWXVSoi9pcPIeO5k0Qb5n5jELlKwdrf66g05U2I6TIxzg==
+  dependencies:
+    "@angular-devkit/core" "11.1.0"
+    "@angular-devkit/schematics" "11.1.0"
+    fs-extra "9.1.0"
+    pluralize "8.0.0"
+
 "@nestjs/schematics@^7.0.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.1.2.tgz#678058436f578fc1e933da9db327a223b1ab8a73"
@@ -2222,16 +2232,6 @@
     "@angular-devkit/core" "9.1.12"
     "@angular-devkit/schematics" "9.1.12"
     fs-extra "9.0.1"
-    pluralize "8.0.0"
-
-"@nestjs/schematics@^7.2.7":
-  version "7.2.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.2.7.tgz#22cd9d687afbbce068a7d20df02806c6f85832a8"
-  integrity sha512-71XqMPf7s2P1Q6PVMDLbSLphVWgGDK2CgURVYyreuIWXVSoi9pcPIeO5k0Qb5n5jELlKwdrf66g05U2I6TIxzg==
-  dependencies:
-    "@angular-devkit/core" "11.1.0"
-    "@angular-devkit/schematics" "11.1.0"
-    fs-extra "9.1.0"
     pluralize "8.0.0"
 
 "@nestjs/schematics@^7.3.0":
@@ -2245,7 +2245,7 @@
     jsonc-parser "3.0.0"
     pluralize "8.0.0"
 
-"@nestjs/testing@^7.6.11":
+"@nestjs/testing@7.6.11":
   version "7.6.11"
   resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.11.tgz#877c4f676be72a8166e95328a995408d5882f37a"
   integrity sha512-wSJcXo5dO5lf2PTYTw1gfT9C0aZhFJd9VfN4dsZYS8nRqDhwT0V3VF7FP6Rrjk2QCtw0PNprI3gozmNvx+oDfA==
@@ -4837,7 +4837,7 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-clsx@^1.1.1:
+clsx@1.1.1, clsx@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -5568,7 +5568,7 @@ cz-conventional-changelog@3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-cz-conventional-changelog@^3.3.0:
+cz-conventional-changelog@3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/cz-conventional-changelog/-/cz-conventional-changelog-3.3.0.tgz#9246947c90404149b3fe2cf7ee91acad3b7d22d2"
   integrity sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==
@@ -11989,7 +11989,7 @@ react-dev-utils@^10.2.1:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dom@^16.8.4:
+react-dom@16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -12113,7 +12113,7 @@ react-toggle@^4.1.1:
   dependencies:
     classnames "^2.2.5"
 
-react@^16.8.4:
+react@16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
@@ -12224,7 +12224,7 @@ recursive-readdir@2.2.2:
   dependencies:
     minimatch "3.0.4"
 
-reflect-metadata@^0.1.13:
+reflect-metadata@0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
   integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
@@ -12659,7 +12659,7 @@ rxjs-for-await@0.0.2:
   resolved "https://registry.yarnpkg.com/rxjs-for-await/-/rxjs-for-await-0.0.2.tgz#26598a1d6167147cc192172970e7eed4e620384b"
   integrity sha512-IJ8R/ZCFMHOcDIqoABs82jal00VrZx8Xkgfe7TOKoaRPAW5nH/VFlG23bXpeGdrmtqI9UobFPgUKgCuFc7Lncw==
 
-rxjs-marbles@^6.0.1:
+rxjs-marbles@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/rxjs-marbles/-/rxjs-marbles-6.0.1.tgz#aef219bd51e1e65caf811c267a05f729e04a1c8e"
   integrity sha512-k9bqj3oRHDRIwnoetpifxXfWRM10Udd1RxgdYLltrE8FmRmKzaHLzxv8oabUlWhQj4/2sfHNR/y7UuhPIcODwA==
@@ -12701,7 +12701,7 @@ rxjs@6.6.2:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@6.6.3, rxjs@^6.4.0, rxjs@^6.5.3, rxjs@^6.5.4, rxjs@^6.6.0, rxjs@^6.6.3, rxjs@~6.6.3:
+rxjs@6.6.3, rxjs@^6.4.0, rxjs@^6.5.3, rxjs@^6.5.4, rxjs@^6.6.0, rxjs@^6.6.3:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
   integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
@@ -13586,7 +13586,7 @@ superagent@^3.8.3:
     qs "^6.5.1"
     readable-stream "^2.3.5"
 
-supertest@^4.0.2:
+supertest@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/supertest/-/supertest-4.0.2.tgz#c2234dbdd6dc79b6f15b99c8d6577b90e4ce3f36"
   integrity sha512-1BAbvrOZsGA3YTCWqbmh14L0YEq0EGICX/nBnfkfVJn7SrxQV1I3pMYjSzG9y/7ZU2V9dWqyqk2POwxlb09duQ==
