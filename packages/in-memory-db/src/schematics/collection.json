@@ -1,5 +1,5 @@
 {
-  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "nest-add": {
       "description": "Schematics to add In-Memory DB Module.",

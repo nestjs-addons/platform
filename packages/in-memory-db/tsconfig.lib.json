@@ -15,5 +15,5 @@
     "skipLibCheck": true
   },
   "exclude": ["**/*.spec.ts", "**/mocks.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "**/*.json"]
 }

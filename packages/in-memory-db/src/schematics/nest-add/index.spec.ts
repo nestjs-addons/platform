@@ -28,11 +28,11 @@ describe('nest add function', () => {
     runner = new SchematicTestRunner('schematics', collectionPath);
   });
 
-  it('should add package to module', async () => {
-    const ngAddTree = await runner
-      .runSchematicAsync('nest-add', '', tree)
-      .toPromise();
+  it('should add package to module', async (done) => {
+    const ngAddTree = await runner.runSchematicAsync('nest-add', '', tree).toPromise();
     const module = ngAddTree.readContent('/src/app.module.ts');
     expect(module).toMatchSnapshot();
+
+    done();
   });
 });
