@@ -36,8 +36,8 @@
     "@nestjs/core": "^7.6.11",
     "@nestjs/platform-express": "^7.6.11",
     "clsx": "^1.1.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3"
   },
