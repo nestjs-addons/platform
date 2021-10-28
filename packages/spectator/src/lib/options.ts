@@ -2,23 +2,34 @@ import { ModuleMetadata, Type } from '@nestjs/common/interfaces';
 import { OptionalsRequired } from './types';
 import { merge } from './internal/merge';
 
-export interface BaseSpectatorModuleMetadata extends ModuleMetadata {
-  mocks?: Type<any>[];
+export interface BaseSpectatorModuleMetadata<T, A> extends ModuleMetadata {
+  mocks?: Type<T, A>[];
 }
 
-const defaultOptions: OptionalsRequired<BaseSpectatorModuleMetadata> = {
-  imports: [],
-  controllers: [],
-  providers: [],
-  exports: [],
-  mocks: [],
-};
+function defaultOptions<T, A>(): OptionalsRequired<
+  BaseSpectatorModuleMetadata<T, A>
+> {
+  return {
+    imports: [],
+    controllers: [],
+    providers: [],
+    exports: [],
+    mocks: [],
+  };
+}
+// const defaultOptions: OptionalsRequired<BaseSpectatorModuleMetadata<T, A>> = {
+//   imports: [],
+//   controllers: [],
+//   providers: [],
+//   exports: [],
+//   mocks: [],
+// };
 
 /**
  * @internal
  */
-export function getSpectatorDefaultOptions<C>(
-  overrides?: BaseSpectatorModuleMetadata,
-): Required<BaseSpectatorModuleMetadata> {
-  return merge(defaultOptions, overrides);
+export function getSpectatorDefaultOptions<T, A>(
+  overrides?: BaseSpectatorModuleMetadata<T, A>,
+): Required<BaseSpectatorModuleMetadata<T, A>> {
+  return merge(defaultOptions<T, A>(), overrides);
 }

@@ -7,8 +7,8 @@ import { TestingModuleBuilder } from '@nestjs/testing/testing-module.builder';
 import { mockProvider } from './mock';
 import { Test } from '@nestjs/testing';
 
-export function createTestingModuleFactory(
-  metadata: BaseSpectatorModuleMetadata,
+export function createTestingModuleFactory<T, A>(
+  metadata: BaseSpectatorModuleMetadata<T, A>,
 ): TestingModuleBuilder {
   const options = getSpectatorDefaultOptions(metadata);
 

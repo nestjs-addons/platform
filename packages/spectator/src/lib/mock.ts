@@ -9,10 +9,10 @@ type Writable<T> = { -readonly [P in keyof T]: T[P] };
 /**
  * @publicApi
  */
-export type BaseSpyObject<T> = T &
+export type BaseSpyObject<T, A> = T &
   {
-    [P in keyof T]: T[P] extends (...args: any[]) => any
-      ? T[P] & CompatibleSpy
+    [P in keyof T]: T[P] extends (...args: A[]) => T
+      ? T[P] & CompatibleSpy<T, A>
       : T[P];
   } & {
     /**
@@ -24,18 +24,18 @@ export type BaseSpyObject<T> = T &
 /**
  * @publicApi
  */
-export interface CompatibleSpy extends jasmine.Spy {
+export interface CompatibleSpy<T, A> extends jasmine.Spy {
   /**
    * By chaining the spy with and.returnValue, all calls to the function will return a specific
    * value.
    */
-  andReturn(val: any): void;
+  andReturn(val: T): void;
 
   /**
    * By chaining the spy with and.callFake, all calls to the spy will delegate to the supplied
    * function.
    */
-  andCallFake(fn: (...args: any[]) => any): this;
+  andCallFake(fn: (...args: A[]) => T): this;
 
   /**
    * removes all recorded calls
@@ -46,19 +46,19 @@ export interface CompatibleSpy extends jasmine.Spy {
 /**
  * @publicApi
  */
-export type SpyObject<T> = BaseSpyObject<T> &
+export type SpyObject<T, A> = BaseSpyObject<T, A> &
   {
     [P in keyof T]: T[P] &
-      (T[P] extends (...args: any[]) => infer R ? jest.Mock<R> : T[P]);
+      (T[P] extends (...args: A[]) => infer R ? jest.Mock<R> : T[P]);
   };
 
 /**
  * @internal
  */
-export function installProtoMethods<T>(
-  mock: any,
-  proto: any,
-  createSpyFn: (...args: any[]) => any,
+export function installProtoMethods<T, A>(
+  mock: BaseSpyObject<T, A>,
+  proto: T,
+  createSpyFn: (...args: string[]) => T,
 ): void {
   if (proto === null || proto === Object.prototype) {
     return;
@@ -96,23 +96,24 @@ export function installProtoMethods<T>(
 /**
  * @publicApi
  */
-export function createSpyObject<T>(
+export function createSpyObject<T, A>(
   type: Provider<T> & { prototype: T },
-  template?: Partial<Record<keyof T, any>>,
-): SpyObject<T> {
-  const mock: any = { ...template } || {};
+  template?: Partial<Record<keyof T, T>>,
+): SpyObject<T, A> {
+  const mock: SpyObject<T, A> =
+    ({ ...template } as SpyObject<T, A>) || ({} as SpyObject<T, A>);
 
   installProtoMethods(mock, type.prototype, () => {
     const jestFn = jest.fn();
-    const newSpy: CompatibleSpy = jestFn as any;
+    const newSpy: CompatibleSpy<T, A> = jestFn as never;
 
-    newSpy.andCallFake = (fn: (...args: any[]) => any) => {
-      jestFn.mockImplementation(fn as (...args: any[]) => any);
+    newSpy.andCallFake = (fn: (...args: A[]) => T) => {
+      jestFn.mockImplementation(fn as (...args: A[]) => T);
 
       return newSpy;
     };
 
-    newSpy.andReturn = (val: any) => {
+    newSpy.andReturn = (val: T) => {
       jestFn.mockReturnValue(val);
     };
 
@@ -129,9 +130,9 @@ export function createSpyObject<T>(
 /**
  * @publicApi
  */
-export function mockProvider<T>(
-  type: Type<T>,
-  properties?: Partial<Record<keyof T, any>>,
+export function mockProvider<T, A>(
+  type: Type<T, A>,
+  properties?: Partial<Record<keyof T, T>>,
 ): FactoryProvider {
   return {
     provide: type,
