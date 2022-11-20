@@ -14,7 +14,7 @@
     "@nestjs/common": "^6.7.0 || ^7.0.0",
     "@nestjs/core": "^6.7.0 || ^7.0.0",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.0.0"
+    "rxjs": "^6.0.0 || ^7.0.0"
   },
   "keywords": [
     "nestjs",
