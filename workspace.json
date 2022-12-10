@@ -1,61 +1,25 @@
 {
   "version": 1,
   "projects": {
-    "playground": {
-      "root": "packages/playground",
-      "sourceRoot": "packages/playground/src",
+    "docs": {
       "projectType": "application",
-      "prefix": "playground",
-      "schematics": {},
+      "root": "packages/docs",
+      "sourceRoot": "packages/docs/src",
       "architect": {
         "build": {
-          "builder": "@nrwl/node:build",
+          "builder": "@nx-plus/docusaurus:browser",
           "options": {
-            "outputPath": "dist/packages/playground",
-            "main": "packages/playground/src/main.ts",
-            "tsConfig": "packages/playground/tsconfig.app.json",
-            "assets": ["packages/playground/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "packages/playground/src/environments/environment.ts",
-                  "with": "packages/playground/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          },
-          "outputs": ["{options.outputPath}"]
+            "outputPath": "dist/packages/docs"
+          }
         },
         "serve": {
-          "builder": "@nrwl/node:execute",
+          "builder": "@nx-plus/docusaurus:dev-server",
           "options": {
-            "buildTarget": "playground:build"
+            "port": 3000
           }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/playground/**/*.ts",
-              "packages/playground/**/*.spec.ts",
-              "packages/playground/**/*.d.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/playground/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/packages/playground"]
         }
-      }
+      },
+      "tags": []
     },
     "in-memory-db": {
       "root": "packages/in-memory-db",
@@ -79,13 +43,15 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/in-memory-db/jest.config.js",
+            "jestConfig": "packages/in-memory-db/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/in-memory-db"]
+          "outputs": [
+            "{workspaceRoot}/coverage/packages/in-memory-db"
+          ]
         },
         "build": {
-          "builder": "@nrwl/node:package",
+          "builder": "@nrwl/js:tsc",
           "options": {
             "outputPath": "dist/packages/in-memory-db",
             "tsConfig": "packages/in-memory-db/tsconfig.lib.json",
@@ -100,9 +66,77 @@
               }
             ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         }
-      }
+      },
+      "tags": []
+    },
+    "playground": {
+      "root": "packages/playground",
+      "sourceRoot": "packages/playground/src",
+      "projectType": "application",
+      "prefix": "playground",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/webpack:webpack",
+          "options": {
+            "outputPath": "dist/packages/playground",
+            "main": "packages/playground/src/main.ts",
+            "tsConfig": "packages/playground/tsconfig.app.json",
+            "assets": [
+              "packages/playground/src/assets"
+            ],
+            "target": "node",
+            "compiler": "tsc"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "packages/playground/src/environments/environment.ts",
+                  "with": "packages/playground/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
+        },
+        "serve": {
+          "builder": "@nrwl/node:node",
+          "options": {
+            "buildTarget": "playground:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/playground/**/*.ts",
+              "packages/playground/**/*.spec.ts",
+              "packages/playground/**/*.d.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/playground/jest.config.ts",
+            "passWithNoTests": true
+          },
+          "outputs": [
+            "{workspaceRoot}/coverage/packages/playground"
+          ]
+        }
+      },
+      "tags": []
     },
     "playground-e2e": {
       "root": "packages/playground-e2e",
@@ -123,12 +157,18 @@
         "e2e": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/playground-e2e/jest.config.js",
+            "jestConfig": "packages/playground-e2e/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/playground-e2e"]
+          "outputs": [
+            "{workspaceRoot}/coverage/packages/playground-e2e"
+          ]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "playground"
+      ]
     },
     "spectator": {
       "root": "packages/spectator",
@@ -152,46 +192,31 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/spectator/jest.config.js",
+            "jestConfig": "packages/spectator/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/packages/spectator"]
+          "outputs": [
+            "{workspaceRoot}/coverage/packages/spectator"
+          ]
         },
         "build": {
-          "builder": "@nrwl/node:package",
+          "builder": "@nrwl/js:tsc",
           "options": {
             "outputPath": "dist/packages/spectator",
             "tsConfig": "packages/spectator/tsconfig.lib.json",
             "packageJson": "packages/spectator/package.json",
             "main": "packages/spectator/src/index.ts",
-            "assets": ["packages/spectator/*.md"]
+            "assets": [
+              "packages/spectator/*.md"
+            ]
           },
-          "outputs": ["{options.outputPath}"]
+          "outputs": [
+            "{options.outputPath}"
+          ]
         }
-      }
-    },
-    "docs": {
-      "projectType": "application",
-      "root": "packages/docs",
-      "sourceRoot": "packages/docs/src",
-      "architect": {
-        "build": {
-          "builder": "@nx-plus/docusaurus:browser",
-          "options": {
-            "outputPath": "dist/packages/docs"
-          }
-        },
-        "serve": {
-          "builder": "@nx-plus/docusaurus:dev-server",
-          "options": {
-            "port": 3000
-          }
-        }
-      }
+      },
+      "tags": []
     }
   },
-  "cli": {
-    "defaultCollection": "@nrwl/nest"
-  },
-  "defaultProject": "playground"
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

@@ -11,19 +11,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [12.x]
+        node-version: [18.x]
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
         with:
           fetch-depth: 3
       - name: Get origin master
         run: |
           git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-      - uses: actions/cache@v1
+      - uses: actions/cache@main
         id: workspace-cache
         with:
           path: node_modules
@@ -32,6 +32,7 @@ jobs:
             ${{ runner.os }}-${{ matrix.node-version }}-workspace-
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
+
   lint:
     runs-on: ${{ matrix.os }}
 
@@ -39,21 +40,21 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [12.x]
+        node-version: [18.x]
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
         with:
           fetch-depth: 3
       - name: Get origin master
         if: github.event_name == 'pull_request'
         run: |
           git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-      - uses: actions/cache@v1
+      - uses: actions/cache@main
         id: workspace-cache
         with:
           path: node_modules
@@ -78,21 +79,21 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [12.x]
+        node-version: [18.x]
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
         with:
           fetch-depth: 3
       - name: Get origin master
         if: github.event_name == 'pull_request'
         run: |
           git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-      - uses: actions/cache@v1
+      - uses: actions/cache@main
         id: workspace-cache
         with:
           path: node_modules
@@ -117,21 +118,21 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [12.x]
+        node-version: [18.x]
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
         with:
           fetch-depth: 3
       - name: Get origin master
         if: github.event_name == 'pull_request'
         run: |
           git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-      - uses: actions/cache@v1
+      - uses: actions/cache@main
         id: workspace-cache
         with:
           path: node_modules
