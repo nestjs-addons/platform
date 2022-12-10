@@ -1,10 +1,10 @@
-module.exports = {
+/* eslint-disable */
+export default {
   preset: '../../jest.preset.js',
   globals: {
-    'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.spec.json',
-    },
+    'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' },
   },
   coverageDirectory: '../../coverage/packages/playground',
   displayName: 'playground',
+  testEnvironment: 'node',
 };
