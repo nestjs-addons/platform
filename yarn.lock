@@ -2181,9 +2181,7 @@
     webpack-node-externals "2.5.2"
 
 "@nestjs/common@^7.6.11":
-  version "7.6.11"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.11.tgz#56b98265a96217e5adad1f3a39cce198592e86cd"
-  integrity sha512-DPBqoORDJC9xO/c83ZXNdUk9rIOLZ1Joqt8hYVtGROMIt7+s4zdbiUOWbNLPhUwluIVczYt4bFjhoU6HWoePgA==
+  version "7.6.18"
   dependencies:
     axios "0.21.1"
     iterare "1.2.1"
@@ -2191,9 +2189,7 @@
     uuid "8.3.2"
 
 "@nestjs/core@^7.6.11":
-  version "7.6.11"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.11.tgz#c0e708ea51cd53c270dcba5e836c3ca643aeb52b"
-  integrity sha512-Knjzy755Er2Nainv/kNqnfQVz8JnCFmqOZbMOZ4IYHzUcfM+Qt/w5rAQQRwRjmpqbyCte4FcVVbv0cU2jBOb/Q==
+  version "7.6.18"
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.0.7"
@@ -2204,9 +2200,7 @@
     uuid "8.3.2"
 
 "@nestjs/platform-express@^7.6.11":
-  version "7.6.11"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.11.tgz#4e12b179cd683f90d2fc91af1611edbafeab230d"
-  integrity sha512-YNlkhoNfu9QswnIQ0Syzzbxy7CKR3kp4+t8SDX4Pz5ZvJ/5NDQzUHTEg3QUoh8L4IG2/nXHC/gUICQP/fuovJw==
+  version "7.6.18"
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -2225,9 +2219,7 @@
     pluralize "8.0.0"
 
 "@nestjs/schematics@^7.2.7":
-  version "7.2.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.2.7.tgz#22cd9d687afbbce068a7d20df02806c6f85832a8"
-  integrity sha512-71XqMPf7s2P1Q6PVMDLbSLphVWgGDK2CgURVYyreuIWXVSoi9pcPIeO5k0Qb5n5jELlKwdrf66g05U2I6TIxzg==
+  version "7.3.1"
   dependencies:
     "@angular-devkit/core" "11.1.0"
     "@angular-devkit/schematics" "11.1.0"
@@ -2246,9 +2238,7 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^7.6.11":
-  version "7.6.11"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.11.tgz#877c4f676be72a8166e95328a995408d5882f37a"
-  integrity sha512-wSJcXo5dO5lf2PTYTw1gfT9C0aZhFJd9VfN4dsZYS8nRqDhwT0V3VF7FP6Rrjk2QCtw0PNprI3gozmNvx+oDfA==
+  version "7.6.18"
   dependencies:
     optional "0.1.4"
     tslib "2.1.0"
